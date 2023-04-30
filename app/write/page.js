@@ -3,14 +3,12 @@ export default function Write() {
     <div className="Container">
       <div className="db box">
         <h4>DB DATA</h4>
-        <form action="/api/db" method="GET">
-          <button>조회</button>
-        </form>
-      </div>
-      <div className="time box">
-        <h4>현재 시간</h4>
-        <form action="/api/time" method="GET">
-          <button>조회</button>
+        <form action="/api/post/new" method="POST" className="db-form">
+          title
+          <input name="title" type="text" placeholder="제목" />
+          content
+          <input name="content" type="text" placeholder="내용" />
+          <button type="submit">생성</button>
         </form>
       </div>
     </div>

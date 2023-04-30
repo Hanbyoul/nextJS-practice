@@ -7,7 +7,7 @@ export default async function DetailLink({ params }) {
   const result = await db
     .collection("post")
     .findOne({ _id: new ObjectId(params.id) });
-  console.log(params);
+
   return (
     <div>
       <h1>상세페이지</h1>

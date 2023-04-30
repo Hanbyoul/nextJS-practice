@@ -13,16 +13,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="nav">
-          <Link href="/">
-            <h2>Home</h2>
+        <div className="navbar">
+          <Link href="/" className="logo">
+            Home
           </Link>
-          <Link href="/list">
-            <h2>List</h2>
-          </Link>
-          <Link href="/write">
-            <h2>데이터 보기</h2>
-          </Link>
+          <Link href="/list">List</Link>
+          <Link href="/write">Write</Link>
         </div>
         {children}
       </body>
