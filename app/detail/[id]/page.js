@@ -10,9 +10,9 @@ export default async function DetailLink({ params }) {
 
   return (
     <div>
-      <h1>상세페이지</h1>
-      <h2>{result.title}</h2>
-      <p>{result.content}</p>
+      <h1>Detail</h1>
+      <h2>제목 : {result.title}</h2>
+      <p>내용 : {result.content}</p>
     </div>
   );
 }

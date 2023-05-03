@@ -20,7 +20,8 @@ export default async function ListItem({ result }) {
             </Link>
             <p>4월 30일</p>
           </div>
-          {item.auth === LoggedInUser?.user.email ? (
+          {item.auth === LoggedInUser?.user.email ||
+          LoggedInUser?.user.role === "admin" ? (
             <div>
               <Buttons id={item._id} />
             </div>

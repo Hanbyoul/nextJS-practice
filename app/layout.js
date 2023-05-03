@@ -15,6 +15,7 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const loggedIn = await getServerSession(authOptions);
+
   console.log(loggedIn ? "로그인됨" : "로그아웃됨");
 
   return (
