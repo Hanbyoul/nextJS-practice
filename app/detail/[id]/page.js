@@ -1,5 +1,6 @@
 import { connectDB } from "@components/app/util/database";
 import { ObjectId } from "mongodb";
+import Comments from "../\bComments";
 
 export default async function DetailLink({ params }) {
   const client = await connectDB;
@@ -9,10 +10,11 @@ export default async function DetailLink({ params }) {
     .findOne({ _id: new ObjectId(params.id) });
 
   return (
-    <div>
-      <h1>Detail</h1>
-      <h2>제목 : {result.title}</h2>
-      <p>내용 : {result.content}</p>
+    <div className="detail">
+      <h1>{result.title}</h1>
+      <hr />
+      <p>{result.content}</p>
+      <Comments params={params.id} />
     </div>
   );
 }
