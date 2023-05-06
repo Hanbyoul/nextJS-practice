@@ -4,11 +4,13 @@ import { authOptions } from "../auth/[...nextauth]";
 
 export default async function handler(req, res) {
   const sessionLoggedIn = await getServerSession(req, res, authOptions);
-  console.log("로그인 유저 정보", sessionLoggedIn);
+
   if (req.method == "POST") {
     const {
       body: { title, content },
     } = req;
+
+    const { image } = req.query;
 
     //예외 처리
     if (title === "") return res.status(500).json("제목이 비어있습니다.");
@@ -18,8 +20,13 @@ export default async function handler(req, res) {
       req.body.auth = sessionLoggedIn.user.email;
     }
 
+    const posting = {
+      title,
+      content,
+      image,
+    };
     const db = (await connectDB).db("forum");
-    await db.collection("post").insertOne(req.body);
+    await db.collection("post").insertOne(posting);
     return res.status(200).redirect(302, "/list");
   }
   return res.end();

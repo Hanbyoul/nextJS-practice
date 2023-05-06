@@ -19,6 +19,13 @@ export default async function DetailLink({ params }) {
       <h1>{result.title}</h1>
       <hr />
       <p>{result.content}</p>
+      {result.image && (
+        <img
+          src={result.image}
+          alt={result.title}
+          style={{ width: 300, height: 300 }}
+        />
+      )}
       <Comments params={params.id} />
     </div>
   );
