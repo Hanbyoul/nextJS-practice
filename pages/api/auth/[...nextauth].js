@@ -40,8 +40,8 @@ export const authOptions = {
       },
     }),
     GithubProvider({
-      clientId: "283977816eb51fb01a80",
-      clientSecret: "f383413bcdd06c452217853ef36e7b338e0210f3",
+      clientId: process.env.GIT_CLIENT,
+      clientSecret: process.env.GIT_SECRET,
     }),
   ],
   //3. jwt 써놔야 잘됩니다 + jwt 만료일설정
