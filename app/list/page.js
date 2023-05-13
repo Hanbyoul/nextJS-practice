@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { connectDB } from "../util/database";
 import ListItem from "./ListItem";
 

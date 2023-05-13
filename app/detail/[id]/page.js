@@ -1,5 +1,7 @@
 import { connectDB } from "@components/app/util/database";
 import { ObjectId } from "mongodb";
+import Comments from "./\bComments";
+import { notFound } from "next/navigation";
 
 export default async function DetailLink({ params }) {
   const client = await connectDB;
@@ -8,11 +10,23 @@ export default async function DetailLink({ params }) {
     .collection("post")
     .findOne({ _id: new ObjectId(params.id) });
 
+  if (result === null) {
+    return notFound();
+  }
+
   return (
-    <div>
-      <h1>상세페이지</h1>
-      <h2>{result.title}</h2>
+    <div className="detail">
+      <h1>{result.title}</h1>
+      <hr />
       <p>{result.content}</p>
+      {result.image && (
+        <img
+          src={result.image}
+          alt={result.title}
+          style={{ width: 300, height: 300 }}
+        />
+      )}
+      <Comments params={params.id} />
     </div>
   );
 }
